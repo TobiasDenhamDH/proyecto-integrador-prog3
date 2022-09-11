@@ -1,19 +1,18 @@
 .character-card{
-    color: #777;
+    color: white;
     font-size: 20px;
     padding: 10px;
     margin-bottom: 15px;
-    width: 25%;
-    background-color: #fff;
-    /* border-radius: 5px; */
-    /* box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15); */
+    max-width: 39vh;
+    background-color: black;
 }
 .character-card img{
     margin-bottom: 20px; 
+    width: 40vh
 }
 .character-card:hover,
 .active{
-box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 40%);
 }
 .character-card p {
     margin: 3px 0;
@@ -25,7 +24,8 @@ box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
     
 }
 .more{
-    color: blue;
+    color:  rgba(111,9,121,1);
+    font-weight: bold;
     text-align: right;
 }
 .delete {
