@@ -1,4 +1,4 @@
-nav{
+nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -8,13 +8,15 @@ nav{
     color: white
   }
   
-  nav ul {
+nav ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
   }
+
 .main-nav li,
+
 .logo li {
     margin: 0 20px;
     display: flex;

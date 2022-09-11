@@ -18,7 +18,7 @@ export default class Home extends Component {
 
     componentDidMount(){
         console.log(this.state.favoritos)
-        this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos'))}) // no se actualiza bien el estado favoritos cuando se vuelve a home
+        this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos'))})
         const url = 'https://api.themoviedb.org/3/movie/popular?api_key=c0945689b0a582e110971301d6ea8be2&language=es'
         fetch(url)
             .then((res)=>res.json())
