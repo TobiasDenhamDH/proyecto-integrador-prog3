@@ -15,11 +15,9 @@ export default function Card(props) {
              <p><strong>Fecha de estreno:</strong> {release_date}</p>
              <p> <strong>Rating:</strong> {vote_average}</p>
              <p className='more'>Ver más</p>
-             {/* <p className='extra'> Origen: </p> */}
-             {/* <a className='more' href="">location url</a>
-             <a className='delete' onClick={()=>props.borrar(id)} >Borrar</a> */}
-             {/* <button className='btn btn-primary' onClick={()=>props.favoritos(props.personajes)}>Favs</button> */}
-         
+             {/* <a className='more' href="/">location url</a> */}
+             {/* <a className='delete' href='/' onClick={()=>props.borrar(id)} >Borrar</a> */}
+             <button className='buttonFav' onClick={()=>{props.favorito(props.peliculas)}}>Favoritos</button>
             </article>
 
         </>
