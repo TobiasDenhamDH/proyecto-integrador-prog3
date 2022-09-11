@@ -18,7 +18,7 @@ export default class NavBar extends Component {
                         <li><Link to="/" >Home</Link></li>
                         <li><Link to="/favoritos">Favoritos</Link></li>
                         <li><Link to="/populares">Peliculas Populares</Link></li>
-                        <li><Link to="/cartelera">Peliculas en Cartelera</Link></li>
+                        <li><Link to="/masvaloradas">Peliculas Más Valoradas</Link></li>
 
                     </ul>
 

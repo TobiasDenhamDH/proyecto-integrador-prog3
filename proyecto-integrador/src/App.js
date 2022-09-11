@@ -8,7 +8,7 @@ import Favoritos from './pages/favoritos/Favoritos'
 import Detalle from './pages/detalle/Detalle'
 import { NotFound } from './pages/notFound/NotFound'
 import Populares from './pages/populares/Populares'
-import Cartelera from './pages/cartelera/Cartelera'
+import MasValoradas from './pages/masValoradas/MasValoradas'
 
 // Import de components
 import Header from './components/header/Header'
@@ -23,7 +23,7 @@ export default function App() {
         <Route path='/' exact component={Home}/>
         <Route path='/favoritos' component={Favoritos}/>
         <Route path='/populares' component={Populares}/>
-        <Route path='/cartelera' component={Cartelera}/>
+        <Route path='/masvaloradas' component={MasValoradas}/>
         <Route path='/detalle/id/:id' component={Detalle}/>
 
 
