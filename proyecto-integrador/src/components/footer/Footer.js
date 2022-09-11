@@ -6,6 +6,7 @@ export default function Footer() {
         <>
            <footer>
                 <p>Copyright © Dashboard 2022</p>
+                <p>Creado por @chiaramaggio @tobiasdenham @rodrigovacaguzman</p>
             </footer> 
         </>
     )

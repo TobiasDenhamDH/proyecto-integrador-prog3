@@ -28,9 +28,8 @@ export default function App() {
 
 
         <Route component={NotFound}/>
-
       </Switch>
-
+      
       <Footer/>
     </BrowserRouter>
   )

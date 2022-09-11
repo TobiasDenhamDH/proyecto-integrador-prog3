@@ -17,7 +17,8 @@ export default class Home extends Component {
     }
 
     componentDidMount(){
-        // this.setState({favoritos: localStorage.getItem('favoritos') || []})
+        console.log(this.state.favoritos)
+        this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos'))}) // no se actualiza bien el estado favoritos cuando se vuelve a home
         const url = 'https://api.themoviedb.org/3/movie/popular?api_key=c0945689b0a582e110971301d6ea8be2&language=es'
         fetch(url)
             .then((res)=>res.json())
@@ -43,6 +44,27 @@ export default class Home extends Component {
             .catch((err)=>{console.log(err)})
     }
 
+    // deleteCard(id){
+    //     const resto = this.state.peliculas.filter(personaje => personaje.id !== id) // se guardan en la variable todos los elementos con id distinto del recibido
+    //     this.setState({peliculas: resto})
+    // }
+
+    handleFavoritos(card){
+        if (this.state.favoritos.some(fav => card.id === fav.id)) {
+            // texto agregar a favoritos
+            this.setState({favoritos: this.state.favoritos.filter(item => item.id !== card.id)}, () => {
+                localStorage.setItem("favoritos", JSON.stringify(this.state.favoritos))
+                // texto quitar de favoritos
+            })
+            console.log(this.state.favoritos.filter(item => item.id !== card.id))
+        } else {
+            this.setState({favoritos: [...this.state.favoritos, card]}, () => {
+                localStorage.setItem("favoritos", JSON.stringify(this.state.favoritos))
+                // texto quitar de favoritos
+            })
+        }
+    }
+
     render() {
         return (
             <>
@@ -54,9 +76,7 @@ export default class Home extends Component {
                 <section className= 'cardContainer'>
 
                     {this.state.peliculas.map(pelicula =>
-                    
-                        <Card key={pelicula.id} peliculas={pelicula} />             
-         
+                        <Card key={pelicula.id} peliculas={pelicula} favorito={(fav) => this.handleFavoritos(fav)}/>             
                     )}
                 
                 </section>
