@@ -69,7 +69,7 @@ export default class Home extends Component {
         return (
             <>
 
-                {/* <h2>Peliculas populares</h2> */}
+                <h1>Peliculas populares</h1>
 
                 {/* <button onClick={()=>this.agregarMas()} >Mas Personajes</button> */}
 
