@@ -7,7 +7,7 @@ export default function Card(props) {
 
     return (
         <>
-            <article  className='character-card'>
+            <article  className='item-card'>
              
              <img src={`${img}${poster_path}`}alt="" />
              <h2>{title}</h2>
@@ -19,7 +19,6 @@ export default function Card(props) {
              {/* <a className='delete' href='/' onClick={()=>props.borrar(id)} >Borrar</a> */}
              <button className='buttonFav' onClick={()=>{props.favorito(props.peliculas)}}>Favoritos</button>
             </article>
-
         </>
     )
 }

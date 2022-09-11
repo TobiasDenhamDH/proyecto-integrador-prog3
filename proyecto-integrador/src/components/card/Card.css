@@ -1,4 +1,4 @@
-.character-card{
+.item-card{
     color: white;
     font-size: 20px;
     padding: 10px;
@@ -6,40 +6,49 @@
     max-width: 39vh;
     background-color: black;
 }
-.character-card img{
+
+.item-card img{
     margin-bottom: 20px; 
     width: 40vh
 }
-.character-card:hover,
+
+.item-card:hover,
 .active{
 box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 40%);
 }
-.character-card p {
+
+.item-card p {
     margin: 3px 0;
     font-size: 15px;
    
 }
-.character-card h2 {
+
+.item-card h2 {
     margin: 2px 0;
     
 }
+
 .more{
     color:  rgba(111,9,121,1);
     font-weight: bold;
     text-align: right;
 }
+
 .delete {
     color: red;
     text-align: right;
 }
+
 .more:hover,
 .delete:hover {
     text-decoration: underline;
     cursor: pointer;
 }
+
 .show{
     display: block;
 }
+
 .hide{
     display: none;
 }
