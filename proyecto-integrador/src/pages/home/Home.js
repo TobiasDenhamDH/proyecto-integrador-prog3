@@ -74,16 +74,17 @@ export default class Home extends Component {
     render() {
         return (
             <>
-                <div className='formContainer'> {/* hacer que quede arriba de la seccion peliculas populares*/}
-                    <form>
+                <div className='formContainer'> 
+                    <form> 
                         <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
                         <button>Buscar</button>
                     </form>
-                </div>
+               
 
                 <div>
                     <h1>Peliculas populares</h1>
                     <Link to='/populares'><button className='btn-mas'>Ver más</button></Link>
+                </div>
                 </div>
 
                 <section className= 'cardContainer'>
