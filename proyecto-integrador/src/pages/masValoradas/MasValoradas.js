@@ -17,8 +17,8 @@ export default class MasValoradas extends Component {
     }
 
     componentDidMount(){
-        // console.log(this.state.favoritos)
-        this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos'))})
+        this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || ['']})
+        localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
 
         const urlValoradas = `https://api.themoviedb.org/3/movie/top_rated?api_key=c0945689b0a582e110971301d6ea8be2&language=es`
         fetch(urlValoradas)
@@ -48,16 +48,13 @@ export default class MasValoradas extends Component {
 
     handleFavoritos(card){
         if (this.state.favoritos.some(fav => card.id === fav.id)) {
-            // texto agregar a favoritos
             this.setState({favoritos: this.state.favoritos.filter(item => item.id !== card.id)}, () => {
                 localStorage.setItem("favoritos", JSON.stringify(this.state.favoritos))
-                // texto quitar de favoritos
             })
             console.log(this.state.favoritos.filter(item => item.id !== card.id))
         } else {
             this.setState({favoritos: [...this.state.favoritos, card]}, () => {
                 localStorage.setItem("favoritos", JSON.stringify(this.state.favoritos))
-                // texto quitar de favoritos
             })
         }
     }

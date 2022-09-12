@@ -30,15 +30,7 @@ export default class Favoritos extends Component {
     render() {
         return (
             <div className="cardContainer">
-                {/* Condicional para cuando no hay nada en favoritos
-                <p className='leyendaFav'></p>
-                {() => {
-                    if (this.state.favoritos === null) {
-                        let leyendaFav = document.querySelector(".leyendaFav");
-                        console.log(leyendaFav)
-                        leyendaFav.innerText = "No tienes agregados a favoritos"
-                    }
-                }} */}
+                {/* Condicional para cuando no hay nada en favoritos */}
                 {this.state.favoritos.map(pelicula => (
                     <Card key={pelicula.id} peliculas={pelicula} favorito={(fav) => this.handleFavoritos(fav)}/>
                 ))}
