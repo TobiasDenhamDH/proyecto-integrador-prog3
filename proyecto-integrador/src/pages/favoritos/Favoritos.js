@@ -3,14 +3,15 @@ import Card from '../../components/card/Card'
 import "./Favoritos.css"
 
 export default class Favoritos extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             favoritos: []
         }
     }
 
     componentDidMount(){ // traer lo que hay en local storage
+        // localStorage.setItem('favoritos', this.state.favoritos || [])
         this.setState({favoritos: JSON.parse(localStorage.getItem("favoritos"))})
     }
 
