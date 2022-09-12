@@ -20,8 +20,6 @@ export default class Home extends Component {
     }
 
     componentDidMount(){
-        // console.log(this.state.favoritos)
-        // localStorage.setItem('favoritos', this.state.favoritos || [])
         this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || []})
 
         const urlPopulares = 'https://api.themoviedb.org/3/movie/popular?api_key=c0945689b0a582e110971301d6ea8be2&language=es'
