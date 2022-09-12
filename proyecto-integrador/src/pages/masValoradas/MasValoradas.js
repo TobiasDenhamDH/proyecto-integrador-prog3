@@ -46,7 +46,21 @@ export default class MasValoradas extends Component {
             .catch((err)=>{console.log(err)})
     }
 
-
+    handleFavoritos(card){
+        if (this.state.favoritos.some(fav => card.id === fav.id)) {
+            // texto agregar a favoritos
+            this.setState({favoritos: this.state.favoritos.filter(item => item.id !== card.id)}, () => {
+                localStorage.setItem("favoritos", JSON.stringify(this.state.favoritos))
+                // texto quitar de favoritos
+            })
+            console.log(this.state.favoritos.filter(item => item.id !== card.id))
+        } else {
+            this.setState({favoritos: [...this.state.favoritos, card]}, () => {
+                localStorage.setItem("favoritos", JSON.stringify(this.state.favoritos))
+                // texto quitar de favoritos
+            })
+        }
+    }
 
     render() {
         return (

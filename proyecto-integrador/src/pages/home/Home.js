@@ -11,6 +11,7 @@ export default class Home extends Component {
             cargando:false,
             peliculasPopulares: [],
             peliculasMasValoradas: [],
+            resultados: [],
             filterBy:'',
             nextUrl:'',
             favoritos: []
@@ -29,7 +30,6 @@ export default class Home extends Component {
                 peliculasPopulares: data.results.slice(0,8), 
                 cargando:true,
                 nextUrl: data.page.next
-
             }))
             .catch((err)=>{console.log(err)})
 
@@ -40,30 +40,26 @@ export default class Home extends Component {
                 peliculasMasValoradas: data.results.slice(0,8), 
                 cargando:true,
                 nextUrl: data.page.next
-    
             }))
             .catch((err)=>{console.log(err)})
-
-        
-    
     }
 
-    // agregarMas(){
-    //     const url = this.state.nextUrl
-    //     fetch(url)
-    //         .then((res)=>res.json())
-    //         .then(data=>this.setState({
-    //             nextUrl:data.info.next,
-    //             peliculas: this.state.peliculas.concat(data.results)
-                
-    //         }))
-    //         .catch((err)=>{console.log(err)})
-    // }
+    filter(filtro){
+        const urlFiltro = `https://api.themoviedb.org/3/search/movie?api_key=c0945689b0a582e110971301d6ea8be2&language=es&search=${filtro}` // no funciona 
+        fetch(urlFiltro)
+            .then((res)=>res.json())
+            .then(//data=>
+                // console.log(data)
+                //this.setState({resultados: data.results})
+            )
+            .catch((err)=>{console.log(err)})
+    }
 
-    // deleteCard(id){
-    //     const resto = this.state.peliculas.filter(personaje => personaje.id !== id) // se guardan en la variable todos los elementos con id distinto del recibido
-    //     this.setState({peliculas: resto})
-    // }
+    handleChange(e){
+        this.setState({
+            filterBy: e.target.value
+        }, ()=>{this.filter(this.state.filterBy)})
+    }
 
     handleFavoritos(card){
         if (this.state.favoritos.some(fav => card.id === fav.id)) {
@@ -84,11 +80,17 @@ export default class Home extends Component {
     render() {
         return (
             <>
+                <div className='formContainer'> {/* hacer que quede arriba de la seccion peliculas populares*/}
+                    <form>
+                        <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
+                        <button>Buscar</button>
+                    </form>
+                </div>
+
                 <div>
                     <h1>Peliculas populares</h1>
                     <Link to='/populares'><button className='btn-mas'>Ver más</button></Link>
                 </div>
-
 
                 <section className= 'cardContainer'>
 
@@ -110,8 +112,6 @@ export default class Home extends Component {
                     )}
                 
                 </section>
-
-
                 
             </>
         )
