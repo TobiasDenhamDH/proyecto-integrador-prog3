@@ -44,13 +44,10 @@ export default class Home extends Component {
     }
 
     filter(filtro){
-        const urlFiltro = `https://api.themoviedb.org/3/search/movie?api_key=c0945689b0a582e110971301d6ea8be2&language=es&search=${filtro}` // no funciona 
+        const urlFiltro = `https://api.themoviedb.org/3/search/movie?api_key=c0945689b0a582e110971301d6ea8be2&language=es&query=${filtro}` // no funciona 
         fetch(urlFiltro)
             .then((res)=>res.json())
-            .then(//data=>
-                // console.log(data)
-                //this.setState({resultados: data.results})
-            )
+            .then(data=> this.setState({peliculasPopulares: data.results}))
             .catch((err)=>{console.log(err)})
     }
 
