@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './Card.css'
 
 export default class Card extends Component {
@@ -22,7 +23,9 @@ export default class Card extends Component {
             <>
                 <article  className='item-card'>
                 
-                <img src={`${img}${this.props.peliculas.poster_path}`}alt="" />
+                <Link to={`/detalle/id/${this.props.peliculas.id}`}>
+                    <img src={`${img}${this.props.peliculas.poster_path}`}alt="" />
+                </Link>
                 <h2>{this.props.peliculas.title}</h2>
                 <p className='decripcion'>{this.props.peliculas.overview}</p>
                 <p><strong>Fecha de estreno:</strong> {this.props.release_date}</p>
@@ -31,7 +34,6 @@ export default class Card extends Component {
                 {/* <a className='more' href="/">location url</a> */}
                 {/* <a className='delete' href='/' onClick={()=>props.borrar(id)} >Borrar</a> */}
                 <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar' : 'Agregar'}</button>
-
                 </article>
             </>
         )

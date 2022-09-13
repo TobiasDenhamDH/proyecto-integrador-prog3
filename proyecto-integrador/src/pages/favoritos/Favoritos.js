@@ -29,12 +29,12 @@ export default class Favoritos extends Component {
 
     render() {
         return (
-            <div className="cardContainer">
+            <section className="cardContainer">
                 {/* Condicional para cuando no hay nada en favoritos */}
                 {this.state.favoritos.map(pelicula => (
                     <Card key={pelicula.id} peliculas={pelicula} favorito={(fav) => this.handleFavoritos(fav)}/>
                 ))}
-            </div>
+            </section>
         )
     }
 }

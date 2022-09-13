@@ -4,3 +4,10 @@
     flex-wrap:wrap;
     justify-content: space-evenly;
 }
+
+.formContainer {
+    display: block;
+    flex-direction:row;
+    flex-wrap:wrap;
+   
+}
