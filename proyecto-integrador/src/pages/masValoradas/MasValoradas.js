@@ -18,7 +18,6 @@ export default class MasValoradas extends Component {
 
     componentDidMount(){
         this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || ['']})
-        localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
 
         const urlValoradas = `https://api.themoviedb.org/3/movie/top_rated?api_key=c0945689b0a582e110971301d6ea8be2&language=es`
         fetch(urlValoradas)
