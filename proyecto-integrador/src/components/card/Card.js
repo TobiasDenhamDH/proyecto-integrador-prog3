@@ -10,7 +10,6 @@ export default class Card extends Component {
             boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.props.peliculas.id)
         }
     }
-
     handleButton(){
         this.setState({boton: !this.state.boton}, ()=>{this.props.favorito(this.props.peliculas)})
     }
@@ -22,7 +21,6 @@ export default class Card extends Component {
         return (
             <>
                 <article  className='item-card'>
-                
                 <Link to={`/detalle/id/${this.props.peliculas.id}`}>
                     <img src={`${img}${this.props.peliculas.poster_path}`}alt="" />
                 </Link>
