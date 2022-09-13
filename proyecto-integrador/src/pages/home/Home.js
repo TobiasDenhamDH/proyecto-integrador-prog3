@@ -16,12 +16,14 @@ export default class Home extends Component {
             nextUrl:'',
             favoritos: []
         }
-    
     }
 
     componentDidMount(){
-        this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || ['']})
-        localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
+        if (localStorage.length > 0) {
+            this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || ['']})
+        } else{
+            localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))            
+        }
 
         const urlPopulares = 'https://api.themoviedb.org/3/movie/popular?api_key=c0945689b0a582e110971301d6ea8be2&language=es'
         fetch(urlPopulares)
@@ -75,12 +77,10 @@ export default class Home extends Component {
         return (
             <>
                 <div className='formContainer'> 
-                    <form> 
+                    <form>
                         <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
                         <button>Buscar</button>
                     </form>
-               
-
                 <div>
                     <h1>Peliculas populares</h1>
                     <Link to='/populares'><button className='btn-mas'>Ver más</button></Link>
