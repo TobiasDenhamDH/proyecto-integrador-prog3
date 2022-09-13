@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './Card.css'
 
 export default class Card extends Component {
@@ -31,7 +32,6 @@ export default class Card extends Component {
                 {/* <a className='more' href="/">location url</a> */}
                 {/* <a className='delete' href='/' onClick={()=>props.borrar(id)} >Borrar</a> */}
                 <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar' : 'Agregar'}</button>
-
                 </article>
             </>
         )
