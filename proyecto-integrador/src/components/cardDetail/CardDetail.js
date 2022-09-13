@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+/* import React, { Component } from 'react'
 
 export default class CardDetail extends Component {
 
@@ -8,9 +8,14 @@ export default class CardDetail extends Component {
     
     render() {
         return (
-            <div>
+            <>
+                <article  className='item-card-detail'>
                 
-            </div>
+               
+               
+                <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar' : 'Agregar'}</button>
+                </article>
+            </>
         )
     }
-}
+} */
