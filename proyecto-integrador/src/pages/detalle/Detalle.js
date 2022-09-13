@@ -33,20 +33,24 @@ render(){
     
     return (
     <>
+    <section>
     <h1>Detalle de {this.state.detalle.title}</h1>
+    
+    
     <section className='cardContainer'>
-        <article className='item-card-detail'>
+        <article className='item-card-detail2'>
             <img src={`${img}${this.state.detalle.poster_path}`}alt="imagen" />
+        </article>
+        <article className= 'item-card-detail'>
             <p>Rating: {this.state.detalle.vote_average}</p>
             <p>Fecha de estreno: {this.state.detalle.release_date}</p>
             <p>Duración: {this.state.detalle.runtime} minutos</p>
             <p>Sinópsis: {this.state.detalle.overview}</p>
-            {/* <p>Género: {this.state.detalle.genres}</p> */}
+            {/* <p>Género: {this.state.detalle.genre}</p> */}
             {/* <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar' : 'Agregar'}</button> */}
-        </article>
-        
+        </article> 
     </section>
-        
+    </section>   
     </>
     )
 }

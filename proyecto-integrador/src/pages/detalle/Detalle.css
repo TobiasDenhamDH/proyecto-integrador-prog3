@@ -3,6 +3,11 @@
     font-size: 20px;
     padding: 10px;
     margin-bottom: 15px;
-    max-width: 39vh;
+    max-width: 50%;
     background-color: black;
+}
+
+.item-card-detail2 img{
+    margin-bottom: 100px; 
+    width: 50vh
 }
