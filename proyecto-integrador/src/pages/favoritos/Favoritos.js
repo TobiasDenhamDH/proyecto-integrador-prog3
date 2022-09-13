@@ -11,7 +11,7 @@ export default class Favoritos extends Component {
     }
 
     componentDidMount(){ // traer lo que hay en local storage
-        this.setState({favoritos: JSON.parse(localStorage.getItem("favoritos")) || []})
+        this.setState({favoritos: JSON.parse(localStorage.getItem("favoritos")) || ['']})
     }
 
     handleFavoritos(card){
