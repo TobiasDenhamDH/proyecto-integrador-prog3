@@ -26,7 +26,7 @@ export default class Card extends Component {
                 </Link>
                 <h2>{this.props.peliculas.title}</h2>
                 <p className='decripcion'>{this.props.peliculas.overview}</p>
-                <p><strong>Fecha de estreno:</strong> {this.props.release_date}</p>
+                <p><strong>Fecha de estreno:</strong> {this.props.peliculas.release_date}</p>
                 <p> <strong>Rating:</strong> {this.props.peliculas.vote_average}</p>
                 <p className='more'>Ver más</p>
                 {/* <a className='more' href="/">location url</a> */}

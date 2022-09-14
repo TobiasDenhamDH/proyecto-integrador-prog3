@@ -7,25 +7,41 @@ import "./Detalle.css"
         this.state={
             id: this.props.match.params.id,
             detalle: {},
-            /* boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.props.peliculas.id) */
+            favoritos: [],
+            boton: ""
         }
     }
 
 componentDidMount(){
-        fetch(`https://api.themoviedb.org/3/movie/${this.state.id}?api_key=c0945689b0a582e110971301d6ea8be2&language=es`)
-        .then(res => res.json())
-        .then(data => {
-            console.log (data)
-                return this.setState({
-                    detalle : data
-                })
-        })
-        .catch(err => console.log(err))
+    this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || ['']})
+
+    fetch(`https://api.themoviedb.org/3/movie/${this.state.id}?api_key=c0945689b0a582e110971301d6ea8be2&language=es`)
+    .then(res => res.json())
+    .then(data => {
+        console.log (data)
+            return this.setState({
+                detalle : data
+            })
+    })
+    .catch(err => console.log(err))
 }
 
-/* handleButton(){
-    this.setState({boton: !this.state.boton}, ()=>{this.props.favorito(this.props.peliculas)})
-} */
+handleFavoritos(card){
+    if (this.state.favoritos.some(fav => card.id === fav.id)) {
+        this.setState({favoritos: this.state.favoritos.filter(item => item.id !== card.id)}, () => {
+            localStorage.setItem("favoritos", JSON.stringify(this.state.favoritos))
+        })
+        console.log(this.state.favoritos.filter(item => item.id !== card.id))
+    } else {
+        this.setState({favoritos: [...this.state.favoritos, card]}, () => {
+            localStorage.setItem("favoritos", JSON.stringify(this.state.favoritos))
+        })
+    }
+}
+
+handleButton(){
+    this.setState({boton: !this.state.boton}, ()=>{this.handleFavoritos(this.state.detalle)})
+}
 
 render(){
 
@@ -47,17 +63,11 @@ render(){
             <p>Duración: {this.state.detalle.runtime} minutos</p>
             <p>Sinópsis: {this.state.detalle.overview}</p>
             {/* <p>Género: {this.state.detalle.genre}</p> */}
-            {/* <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar' : 'Agregar'}</button> */}
+            <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Agregar' : 'Quitar'}</button>
         </article> 
     </section>
     </section>   
     </>
     )
 }
-/* 
- render(){
-    <>
-        <img src={this.state.detalle.image}
-    </>
- } */
 }
