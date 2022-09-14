@@ -99,7 +99,7 @@ export default class Home extends Component {
                     </form>
                 <div>
                     <h1>Peliculas populares</h1>
-                    <Link to='/populares'><button className='btn-mas'>Ver más</button></Link>
+                    <Link to='/populares'><button className='btn-mas'>Ver todas</button></Link>
                 </div>
                 </div>
 
@@ -113,7 +113,7 @@ export default class Home extends Component {
 
                 <div>
                     <h1>Peliculas Más Valoradas</h1>
-                    <Link to='/masvaloradas'><button className='btn-mas'>Ver más</button></Link>
+                    <Link to='/masvaloradas'><button className='btn-mas'>Ver todas</button></Link>
                 </div>
 
                 <section className= 'cardContainer'>

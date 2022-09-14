@@ -8,7 +8,7 @@ import "./Detalle.css"
             id: this.props.match.params.id,
             detalle: {},
             favoritos: [],
-            boton: ""
+            boton: []
         }
     }
 
@@ -20,7 +20,8 @@ componentDidMount(){
     .then(data => {
         console.log (data)
             return this.setState({
-                detalle : data
+                detalle : data,
+                boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.state.detalle.id)
             })
     })
     .catch(err => console.log(err))
@@ -63,7 +64,7 @@ render(){
             <p>Duración: {this.state.detalle.runtime} minutos</p>
             <p>Sinópsis: {this.state.detalle.overview}</p>
             {/* <p>Género: {this.state.detalle.genre}</p> */}
-            <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Agregar' : 'Quitar'}</button>
+            <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
         </article> 
     </section>
     </section>   
