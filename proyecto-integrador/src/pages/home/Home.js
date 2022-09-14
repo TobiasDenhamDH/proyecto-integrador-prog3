@@ -11,7 +11,6 @@ export default class Home extends Component {
             cargando:false,
             peliculasPopulares: [],
             peliculasMasValoradas: [],
-            resultados: [],
             filterBy:'',
             nextUrl:'',
             favoritos: []
@@ -21,7 +20,7 @@ export default class Home extends Component {
     componentDidMount(){
         if (localStorage.length > 0) {
             this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || ['']})
-        } else{
+        }else{
             localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))            
         }
 
@@ -59,12 +58,26 @@ export default class Home extends Component {
         }
     }
 
+    handleSubmit(e){
+        let target = e.target.value
+        console.log(target)
+        // if (e.) {
+            
+        // }
+        // e.preventDefault();
+    }
+
     filter(filtro){
-        const urlFiltro = `https://api.themoviedb.org/3/search/movie?api_key=c0945689b0a582e110971301d6ea8be2&language=es&query=${filtro}` // no funciona 
-        fetch(urlFiltro)
-            .then((res)=>res.json())
-            .then(data=> this.setState({peliculasPopulares: data.results}))
-            .catch((err)=>{console.log(err)})
+        // const urlFiltro = `https://api.themoviedb.org/3/search/movie?api_key=c0945689b0a582e110971301d6ea8be2&language=es&query=${filtro}` 
+        // fetch(urlFiltro)
+        // .then((res)=>res.json())
+        // .then(data=> this.setState({peliculasPopulares: data.results}))
+        // .catch((err)=>{console.log(err)}) 
+            
+            // fetch(urlFiltro)
+            // .then((res)=>res.json())
+            // .then(data=> this.setState({peliculasValoradas: data.results}))
+            // .catch((err)=>{console.log(err)})
     }
 
     handleChange(e){
@@ -73,13 +86,16 @@ export default class Home extends Component {
         }, ()=>{this.filter(this.state.filterBy)})
     }
 
+
     render() {
         return (
             <>
                 <div className='formContainer'> 
                     <form>
                         <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
-                        <button>Buscar</button>
+                        <label>Buscar en películas populares</label><input type='radio' name='searchCategory' id='populares'/>
+                        <label>Buscar en películas valoradas</label><input type='radio' name='searchCategory' id='valoradas'/>
+                        <button onSubmit={(e)=> this.handleSubmit(e)}>Buscar</button>
                     </form>
                 <div>
                     <h1>Peliculas populares</h1>
