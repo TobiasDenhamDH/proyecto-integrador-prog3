@@ -7,14 +7,14 @@ export default class Favoritos extends Component {
         super(props)
         this.state = {
             favoritos: [],
-            leyenda: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.props.peliculas.id)
+            //leyenda: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.props.peliculas.id)
         }
     }
 
     componentDidMount(){ // traer lo que hay en local storage
         this.setState({favoritos: JSON.parse(localStorage.getItem("favoritos")) || ['']})
 
-        // console.log(this.state.leyenda)
+        //console.log(this.state.leyenda)
     }
 
     handleFavoritos(card){
@@ -36,7 +36,7 @@ export default class Favoritos extends Component {
                 
                 <h1>Favoritos</h1>
                 
-                <strong><p>{this.state.leyenda ? '' : 'No tienes agregados a favoritos'}</p></strong>
+                {/* {<strong><p>{this.state.leyenda ? '' : 'No tienes agregados a favoritos'}</p></strong>} */}
 
                 <section className="cardContainer">
                     {this.state.favoritos.map(pelicula => (

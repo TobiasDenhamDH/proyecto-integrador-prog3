@@ -32,7 +32,7 @@ export default class Card extends Component {
                 <p className='more'>Ver más</p>
                 {/* <a className='more' href="/">location url</a> */}
                 {/* <a className='delete' href='/' onClick={()=>props.borrar(id)} >Borrar</a> */}
-                <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar' : 'Agregar'}</button>
+                <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
                 </article>
             </>
         )
