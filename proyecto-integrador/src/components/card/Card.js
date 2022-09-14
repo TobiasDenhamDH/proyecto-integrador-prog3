@@ -10,12 +10,13 @@ export default class Card extends Component {
             boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.props.peliculas.id)
         }
     }
+    
     handleButton(){
         this.setState({boton: !this.state.boton}, ()=>{this.props.favorito(this.props.peliculas)})
     }
     
     render() {
-        //let {poster_path, title, overview,release_date, vote_average, id} = this.props.peliculas
+
         let img = 'https://image.tmdb.org/t/p/w342'
 
         return (

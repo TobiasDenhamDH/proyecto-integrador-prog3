@@ -9,5 +9,8 @@
     display: block;
     flex-direction:row;
     flex-wrap:wrap;
-   
+}
+
+form, label {
+    color: white;
 }
