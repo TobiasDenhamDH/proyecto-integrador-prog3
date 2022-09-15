@@ -56,15 +56,6 @@ export default class Home extends Component {
         }
     }
 
-    handleSubmit(e){
-        let target = e.target.value
-        console.log(target)
-        // if (e.) {
-            
-        // }
-        // e.preventDefault();
-    }
-
     filter(filtro){
         console.log("Hola")      
         const urlFiltro = `https://api.themoviedb.org/3/search/movie?api_key=c0945689b0a582e110971301d6ea8be2&language=es&query=${filtro}` 
@@ -76,33 +67,47 @@ export default class Home extends Component {
     }
 
     handleChange(e){
-        this.setState({
-            filterBy: e.target.value
-        }, ()=>{this.filter(this.state.filterBy)})
+        this.setState(
+            {filterBy: e.target.value}, 
+            ()=>{this.filter(this.state.filterBy)})
     }
 
-
+    handleSubmit(e){
+        if (e.target.value === null) {
+            this.setState({resultados: []})
+        e.preventDefault()
+        }
+    }
     render() {
         return (
             <>
                 <div className='formContainer'> 
                     <form>
                         <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
-                        <button onSubmit={(e)=> this.handleSubmit(e)}>Buscar</button>
                     </form>
                 </div>
 
-                
-
                 {this.state.resultados.length ? 
+
+                <div className='formContainer'>
+
+                <div>
+                    <h1>Resultados de búsqueda</h1>
+                </div>
+
                 <section className= 'cardContainer'>
 
                     {this.state.resultados.map(resultado=>
-                <Card key={resultado.id} peliculas={resultado} favorito={(fav) => this.handleFavoritos(fav)}/>  )}
+                        <Card key={resultado.id} peliculas={resultado} favorito={(fav) => this.handleFavoritos(fav)}/>
+                    )}
                 
-                </section> :
-                <>
+                </section> 
                 
+                </div>
+
+                :
+                
+                <div className='formContainer'>
 
                 <div>
                     <h1>Peliculas populares</h1>
@@ -129,7 +134,8 @@ export default class Home extends Component {
                     )}
                 
                 </section>
-                </>
+
+                </div>
                 }
                 
             </>
