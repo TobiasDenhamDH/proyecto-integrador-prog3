@@ -53,7 +53,7 @@ render(){
     return (
     <>
     <section>
-    <h1>Detalle de {this.state.detalle.title}</h1>
+    <h1><strong>Detalle de {this.state.detalle.title}</strong></h1>
     
     
     <section className='cardContainer'>
@@ -61,11 +61,11 @@ render(){
             <img src={`${img}${this.state.detalle.poster_path}`}alt="imagen" />
         </article>
         <article className= 'item-card-detail'>
-            <p>Rating: {this.state.detalle.vote_average}</p>
-            <p>Fecha de estreno: {this.state.detalle.release_date}</p>
-            <p>Duración: {this.state.detalle.runtime} minutos</p>
-            <p>Sinópsis: {this.state.detalle.overview}</p>
-            <p>Género: {this.state.genre}</p>
+            <p><strong>Rating:</strong> {this.state.detalle.vote_average}</p>
+            <p><strong>Fecha de estreno:</strong> {this.state.detalle.release_date}</p>
+            <p><strong>Duración:</strong> {this.state.detalle.runtime} minutos</p>
+            <p><strong>Sinópsis:</strong> {this.state.detalle.overview}</p>
+            <p><strong>Género:</strong> {this.state.genre}</p>
             <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
         </article> 
     </section>
