@@ -19,7 +19,6 @@ componentDidMount(){
     fetch(`https://api.themoviedb.org/3/movie/${this.state.id}?api_key=c0945689b0a582e110971301d6ea8be2&language=es`)
     .then(res => res.json())
     .then(data => {
-        console.log (data)
             return this.setState({
                 detalle : data,
                 genre: data.genres[0].name,

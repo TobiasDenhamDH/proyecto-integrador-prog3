@@ -12,7 +12,7 @@ export default class Home extends Component {
             peliculasPopulares: [],
             peliculasMasValoradas: [],
             filterBy:'',
-            nextUrl:'',
+            resultados: [],
             favoritos: []
         }
     }
@@ -30,7 +30,6 @@ export default class Home extends Component {
             .then(data=>this.setState({
                 peliculasPopulares: data.results.slice(0,8), 
                 cargando:true,
-                nextUrl: data.page.next
             }))
             .catch((err)=>{console.log(err)})
 
@@ -40,7 +39,6 @@ export default class Home extends Component {
             .then(data=>this.setState({
                 peliculasMasValoradas: data.results.slice(0,8), 
                 cargando:true,
-                nextUrl: data.page.next
             }))
             .catch((err)=>{console.log(err)})
     }
@@ -68,16 +66,13 @@ export default class Home extends Component {
     }
 
     filter(filtro){
-        // const urlFiltro = `https://api.themoviedb.org/3/search/movie?api_key=c0945689b0a582e110971301d6ea8be2&language=es&query=${filtro}` 
-        // fetch(urlFiltro)
-        // .then((res)=>res.json())
-        // .then(data=> this.setState({peliculasPopulares: data.results}))
-        // .catch((err)=>{console.log(err)}) 
+        console.log("Hola")      
+        const urlFiltro = `https://api.themoviedb.org/3/search/movie?api_key=c0945689b0a582e110971301d6ea8be2&language=es&query=${filtro}` 
+        fetch(urlFiltro)
+        .then((res)=>res.json())
+        .then(data=> this.setState({resultados: data.results}))
+        .catch((err)=>{console.log(err)}) 
             
-            // fetch(urlFiltro)
-            // .then((res)=>res.json())
-            // .then(data=> this.setState({peliculasValoradas: data.results}))
-            // .catch((err)=>{console.log(err)})
     }
 
     handleChange(e){
@@ -93,14 +88,25 @@ export default class Home extends Component {
                 <div className='formContainer'> 
                     <form>
                         <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
-                        <label>Buscar en películas populares</label><input type='radio' name='searchCategory' id='populares'/>
-                        <label>Buscar en películas valoradas</label><input type='radio' name='searchCategory' id='valoradas'/>
                         <button onSubmit={(e)=> this.handleSubmit(e)}>Buscar</button>
                     </form>
+                </div>
+
+                
+
+                {this.state.resultados.length ? 
+                <section className= 'cardContainer'>
+
+                    {this.state.resultados.map(resultado=>
+                <Card key={resultado.id} peliculas={resultado} favorito={(fav) => this.handleFavoritos(fav)}/>  )}
+                
+                </section> :
+                <>
+                
+
                 <div>
                     <h1>Peliculas populares</h1>
                     <Link to='/populares'><button className='btn-mas'>Ver todas</button></Link>
-                </div>
                 </div>
 
                 <section className= 'cardContainer'>
@@ -123,6 +129,8 @@ export default class Home extends Component {
                     )}
                 
                 </section>
+                </>
+                }
                 
             </>
         )
