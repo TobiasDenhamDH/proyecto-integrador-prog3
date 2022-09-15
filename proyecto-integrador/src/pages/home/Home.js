@@ -57,7 +57,6 @@ export default class Home extends Component {
     }
 
     filter(filtro){
-        console.log("Hola")      
         const urlFiltro = `https://api.themoviedb.org/3/search/movie?api_key=c0945689b0a582e110971301d6ea8be2&language=es&query=${filtro}` 
         fetch(urlFiltro)
         .then((res)=>res.json())
@@ -67,17 +66,19 @@ export default class Home extends Component {
     }
 
     handleChange(e){
-        this.setState(
-            {filterBy: e.target.value}, 
-            ()=>{this.filter(this.state.filterBy)})
+        if (e.target.value.length === 0) {
+            e.preventDefault()
+            this.setState(
+                { filterBy: '',
+                resultados: []})
+        } else {
+            this.setState(
+                {filterBy: e.target.value}, 
+                ()=>{this.filter(this.state.filterBy)})
+        }
+            console.log (e.target.value)
     }
 
-    handleSubmit(e){
-        if (e.target.value === null) {
-            this.setState({resultados: []})
-        e.preventDefault()
-        }
-    }
     render() {
         return (
             <>
