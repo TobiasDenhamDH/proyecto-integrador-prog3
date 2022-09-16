@@ -76,7 +76,7 @@ export default class Home extends Component {
                 {filterBy: e.target.value}, 
                 ()=>{this.filter(this.state.filterBy)})
         }
-            console.log (e.target.value)
+        //console.log (e.target.value)
     }
 
     render() {
@@ -84,7 +84,7 @@ export default class Home extends Component {
             <>
                 <div className='formContainer'> 
                     <form>
-                        <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
+                        <input type='search' name='search' placeholder='Buscar películas...' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
                     </form>
                 </div>
 

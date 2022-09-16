@@ -11,9 +11,9 @@ export default class Populares extends Component {
             peliculasPopulares: [],
             filterBy:'',
             nextUrl:'',
-            favoritos: []
+            favoritos: [],
+            peliculasFiltradas: []
         }
-    
     }
 
     componentDidMount(){
@@ -26,10 +26,8 @@ export default class Populares extends Component {
                 peliculasPopulares: data.results, 
                 cargando:true,
                 page: data.page
-
             }))
             .catch((err)=>{console.log(err)})
-        
     
     }
 
@@ -57,22 +55,74 @@ export default class Populares extends Component {
         }
     }
 
+    filter(filtro){
+        let popularesFiltradas = this.state.peliculasPopulares.filter(pelicula => {return pelicula.title.includes(filtro)})
+        this.setState({peliculasFiltradas: popularesFiltradas})      
+    }
+
+    handleChange(e){
+        if (e.target.value.length === 0) {
+            e.preventDefault()
+            this.setState(
+                {filterBy: '',
+                peliculasFiltradas: []
+            })
+        } else {
+            this.setState(
+                {filterBy: e.target.value}, 
+                ()=>{this.filter(this.state.filterBy)})
+        }
+        //console.log (e.target.value)
+    }
+
     render() {
         return (
             <>
-            <div>
-                <h1>Peliculas populares</h1>
-                <button className="btn-mas" onClick={()=>this.agregarMas()} >Cargar Más Peliculas</button>
-            </div>
-            
-                <section className= 'cardContainer'>
+                <div className='formContainer'> 
+                        <form>
+                            <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
+                        </form>
+                </div>
 
-                    {this.state.peliculasPopulares.map(pelicula =>
+                {this.state.peliculasFiltradas.length ? 
+
+                <div className='formContainer'>
+
+                    <div>
+                        <h1>Peliculas populares</h1>
+                        <button className="btn-mas" onClick={()=>this.agregarMas()} >Cargar Más Peliculas</button>
+                    </div>
+                
+                    <section className= 'cardContainer'>
+
+                    {this.state.peliculasFiltradas.map(pelicula =>
                         <Card key={pelicula.id} peliculas={pelicula} favorito={(fav) => this.handleFavoritos(fav)}/>             
                     )}
                 
-                </section>
+                    </section>
 
+                </div>
+                
+                :
+                
+                <div className='formContainer'>
+
+                    <div>
+                        <h1>Peliculas populares</h1>
+                        <button className="btn-mas" onClick={()=>this.agregarMas()} >Cargar Más Peliculas</button>
+                    </div>
+                    
+                    <section className= 'cardContainer'>
+
+                        {this.state.peliculasPopulares.map(pelicula =>
+                            <Card key={pelicula.id} peliculas={pelicula} favorito={(fav) => this.handleFavoritos(fav)}/>             
+                        )}
+                    
+                    </section>
+
+                </div>
+
+                }
                 
             </>
         )
