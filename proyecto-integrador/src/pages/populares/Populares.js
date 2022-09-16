@@ -10,7 +10,7 @@ export default class Populares extends Component {
             cargando:false,
             peliculasPopulares: [],
             filterBy:'',
-            nextUrl:'',
+            page:'',
             favoritos: [],
             peliculasFiltradas: []
         }

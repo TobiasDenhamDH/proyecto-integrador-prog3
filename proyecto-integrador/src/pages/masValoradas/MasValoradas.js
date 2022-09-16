@@ -10,7 +10,7 @@ export default class MasValoradas extends Component {
             cargando:false,
             peliculasMasValoradas: [],
             filterBy:'',
-            nextUrl:'',
+            page:'',
             favoritos: []
         }
     

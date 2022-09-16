@@ -38,7 +38,7 @@ export default class Favoritos extends Component {
 
                 {this.state.favoritos.length === 0  ? 
                 
-                <strong><p>No tienes agregados a favoritos</p></strong>
+                <strong><h1>No tienes peliculas agregadas a favoritos</h1></strong>
                 
                 :
 
