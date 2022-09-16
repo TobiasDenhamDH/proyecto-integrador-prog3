@@ -39,7 +39,7 @@ export default class Populares extends Component {
             .then((res)=>res.json())
             .then(data=>this.setState({
                 page:data.page,
-                peliculasPopulares: this.state.peliculasPopulares.concat(data.results)
+                peliculasPopulares: data.results.concat(this.state.peliculasPopulares)
             }))
             .catch((err)=>{console.log(err)})
     }

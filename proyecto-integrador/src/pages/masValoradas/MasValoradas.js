@@ -39,7 +39,7 @@ export default class MasValoradas extends Component {
             .then((res)=>res.json())
             .then(data=>this.setState({
                 page:data.page,
-                peliculasMasValoradas: this.state.peliculasMasValoradas.concat(data.results)
+                peliculasMasValoradas: data.results.concat(this.state.peliculasMasValoradas)
                 
             }))
             .catch((err)=>{console.log(err)})
