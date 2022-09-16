@@ -30,9 +30,11 @@ export default class Card extends Component {
                     <img src={`${img}${this.props.peliculas.poster_path}`}alt="" />
                 </Link>
                 <h2>{this.props.peliculas.title}</h2>
-                <p className='more' onClick={this.vermas}><strong>Ver más</strong></p>
-                {this.state.descripcion === false? <></> : <p className='descripcion'> {this.props.peliculas.overview} </p>}
-                <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
+                {this.state.descripcion === false? <> 
+                <p className='more' onClick={this.vermas}><strong>Ver más</strong></p></> : <> <p className='more' onClick={this.vermas}><strong>Ver menos</strong>
+                </p> <p>{this.props.peliculas.overview}</p></>
+                }
+                <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button> 
                 </article>
             </>
         )
