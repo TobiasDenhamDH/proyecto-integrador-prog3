@@ -31,7 +31,7 @@ export default class Card extends Component {
                 </Link>
                 <h2>{this.props.peliculas.title}</h2>
                 <p className='more' onClick={this.vermas}><strong>Ver más</strong></p>
-                {this.state.descripcion === false? <></> : <p> {this.props.peliculas.overview} </p>}
+                {this.state.descripcion === false? <></> : <p className='descripcion'> {this.props.peliculas.overview} </p>}
                 <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
                 </article>
             </>
