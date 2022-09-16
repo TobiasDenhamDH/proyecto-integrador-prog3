@@ -35,14 +35,20 @@ export default class Favoritos extends Component {
             <div className='container'>
                 
                 <h1>Favoritos</h1>
+
+                {this.state.favoritos.length === 0  ? 
                 
-                {/* {<strong><p>{this.state.leyenda ? '' : 'No tienes agregados a favoritos'}</p></strong>} */}
+                <strong><p>No tienes agregados a favoritos</p></strong>
+                
+                :
 
                 <section className="cardContainer">
                     {this.state.favoritos.map(pelicula => (
                         <Card key={pelicula.id} peliculas={pelicula} favorito={(fav) => this.handleFavoritos(fav)}/>
                     ))}
                 </section>
+                }
+
             </div>
         )
     }
