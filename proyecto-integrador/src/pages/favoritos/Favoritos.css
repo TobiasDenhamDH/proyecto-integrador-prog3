@@ -1,17 +1,17 @@
-.cardContainer{
-    display: flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content: space-evenly;
-}
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-p {
+.cardContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+h3 {
     color: white;
     padding-left: 15px;
 }

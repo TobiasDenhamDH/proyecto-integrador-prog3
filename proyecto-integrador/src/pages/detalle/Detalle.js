@@ -50,25 +50,27 @@ render(){
     let img = 'https://image.tmdb.org/t/p/w342'
     
     return (
-    <>
-    <section>
-    <h1><strong>Detalle de {this.state.detalle.title}</strong></h1>
+    <>  
+
+        <h1>Detalle de {this.state.detalle.title}</h1>
+        
+        <section className='cardContainer'>
+
+            <div className='item-card-detail2'>
+                <img src={`${img}${this.state.detalle.poster_path}`}alt="imagen"/>
+            </div>
+
+            <article className= 'item-card-detail'>
+                <p><strong>Rating:</strong> {this.state.detalle.vote_average}</p>
+                <p><strong>Fecha de estreno:</strong> {this.state.detalle.release_date}</p>
+                <p><strong>Duración:</strong> {this.state.detalle.runtime} minutos</p>
+                <p><strong>Sinópsis:</strong> {this.state.detalle.overview}</p>
+                <p><strong>Género:</strong> {this.state.genre}</p>
+                <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
+            </article> 
+
+        </section>
     
-    
-    <section className='cardContainer'>
-        <article className='item-card-detail2'>
-            <img src={`${img}${this.state.detalle.poster_path}`}alt="imagen" />
-        </article>
-        <article className= 'item-card-detail'>
-            <p><strong>Rating:</strong> {this.state.detalle.vote_average}</p>
-            <p><strong>Fecha de estreno:</strong> {this.state.detalle.release_date}</p>
-            <p><strong>Duración:</strong> {this.state.detalle.runtime} minutos</p>
-            <p><strong>Sinópsis:</strong> {this.state.detalle.overview}</p>
-            <p><strong>Género:</strong> {this.state.genre}</p>
-            <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
-        </article> 
-    </section>
-    </section>   
     </>
     )
 }

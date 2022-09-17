@@ -1,4 +1,11 @@
- .item-card-detail {
+.cardContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.item-card-detail {
     color: white;
     font-size: 20px;
     padding: 10px;
