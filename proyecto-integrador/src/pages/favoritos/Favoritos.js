@@ -13,8 +13,10 @@ export default class Favoritos extends Component {
     }
 
     componentDidMount(){ // traer lo que hay en local storage
-        this.state.cargando= true
-        this.setState({favoritos: JSON.parse(localStorage.getItem("favoritos")) || ['']})
+        this.setState({
+            favoritos: JSON.parse(localStorage.getItem("favoritos")) || [''],
+            cargando: true
+        })
         
         //console.log(this.state.leyenda)
     }

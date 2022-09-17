@@ -56,7 +56,8 @@ export default class Populares extends Component {
     }
 
     filter(filtro){
-        let popularesFiltradas = this.state.peliculasPopulares.filter(pelicula => {return pelicula.title.includes(filtro)})
+        console.log(filtro)
+        let popularesFiltradas = this.state.peliculasPopulares.filter((pelicula => pelicula.title.includes(filtro)))
         this.setState({peliculasFiltradas: popularesFiltradas})      
     }
 

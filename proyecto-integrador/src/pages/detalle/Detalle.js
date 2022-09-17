@@ -21,12 +21,12 @@ componentDidMount(){
     fetch(`https://api.themoviedb.org/3/movie/${this.state.id}?api_key=c0945689b0a582e110971301d6ea8be2&language=es`)
     .then(res => res.json())
     .then(data => {
-            return this.setState({
-                detalle : data,
-                genre: data.genres[0].name,
-                boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.state.detalle.id),
-                cargando: true
-            })
+        this.setState({
+            cargando: true,
+            detalle : data,
+            genre: data.genres[0].name,
+            boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.state.detalle.id)
+        })
     })
     .catch(err => console.log(err))
 }
@@ -54,24 +54,26 @@ render(){
     
     return (
         <>
-        {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></>: <> 
-            <section>
-            <h1><strong>Detalle de {this.state.detalle.title}</strong></h1>
-            <section className='cardContainer'>
-                <article className='item-card-detail2'>
-                    <img src={`${img}${this.state.detalle.poster_path}`}alt="imagen" />
-                </article>
-                <article className= 'item-card-detail'>
-                    <p><strong>Rating:</strong> {this.state.detalle.vote_average}</p>
-                    <p><strong>Fecha de estreno:</strong> {this.state.detalle.release_date}</p>
-                    <p><strong>Duración:</strong> {this.state.detalle.runtime} minutos</p>
-                    <p><strong>Sinópsis:</strong> {this.state.detalle.overview}</p>
-                    <p><strong>Género:</strong> {this.state.genre}</p>
-                    <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
-                </article> 
-            </section>
-            </section>  
-        </>}
+        {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></>: 
+        
+            <> 
+                <section>
+                    <h1>Detalle de {this.state.detalle.title}</h1>
+                    <section className='cardContainer'>
+                        <article className='item-card-detail2'>
+                            <img src={`${img}${this.state.detalle.poster_path}`}alt="imagen" />
+                        </article>
+                        <article className= 'item-card-detail'>
+                            <p><strong>Rating:</strong> {this.state.detalle.vote_average}</p>
+                            <p><strong>Fecha de estreno:</strong> {this.state.detalle.release_date}</p>
+                            <p><strong>Duración:</strong> {this.state.detalle.runtime} minutos</p>
+                            <p><strong>Sinópsis:</strong> {this.state.detalle.overview}</p>
+                            <p><strong>Género:</strong> {this.state.genre}</p>
+                            <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
+                        </article> 
+                    </section>
+                </section>  
+            </>}
         </>
     )
 }

@@ -82,7 +82,9 @@ export default class Home extends Component {
     render() {
         return (
             <>
-             {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></> : <>
+             {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></> : 
+             
+             <>
                 <div className='formContainer'> 
                     <form>
                         <input type='search' name='search' placeholder='Buscar películas...' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
