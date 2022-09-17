@@ -80,13 +80,21 @@ export default class Populares extends Component {
         return (
             <>
             {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></>:<>
-                <div className='formContainer'> 
+                
+                {/* <div className='formContainer'> 
                         <form>
-                            <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
+                            <input type='search' name='search' placeholder='Buscar películas' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
                         </form>
-                </div>
+                </div> */}
 
                 {this.state.peliculasFiltradas.length ? 
+
+                <>
+                <div className='formContainer'> 
+                    <form>
+                        <input type='search' name='search' placeholder='Buscar películas' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
+                    </form>
+                </div>
 
                 <div className='formContainer'>
 
@@ -103,10 +111,18 @@ export default class Populares extends Component {
                 
                     </section>
 
-                </div>
-                
+                </div> 
+                </>
+
                 :
-                
+
+                <> 
+                <div className='formContainer'> 
+                        <form>
+                            <input type='search' name='search' placeholder='Buscar películas' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
+                        </form>
+                </div>
+
                 <div className='formContainer'>
 
                     <div>
@@ -123,7 +139,7 @@ export default class Populares extends Component {
                     </section>
 
                 </div>
-                }
+                </>}
             </>}
                 
             </>

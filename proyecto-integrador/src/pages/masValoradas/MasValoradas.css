@@ -7,7 +7,24 @@ div {
   
 } 
 
+.cardContainer {
+    display: flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+} 
+
 div .btn-mas{
     margin-left: 15px;
     height: 5vh;
+}
+
+.formContainer {
+    display: block;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
+
+form, label {
+    color: white;
 }
