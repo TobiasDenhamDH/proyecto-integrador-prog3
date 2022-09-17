@@ -38,7 +38,7 @@ export default class Home extends Component {
             .then((res)=>res.json())
             .then(data=>this.setState({
                 peliculasMasValoradas: data.results.slice(0,8), 
-                cargando:true,
+                cargando: true,
             }))
             .catch((err)=>{console.log(err)})
     }
@@ -82,6 +82,9 @@ export default class Home extends Component {
     render() {
         return (
             <>
+             {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></> : 
+             
+             <>
                 <div className='formContainer'> 
                     <form>
                         <input type='search' name='search' placeholder='Buscar películas...' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
@@ -138,6 +141,7 @@ export default class Home extends Component {
 
                 </div>
                 }
+            </>}
                 
             </>
         )

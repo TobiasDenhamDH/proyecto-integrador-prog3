@@ -1,3 +1,9 @@
 .notFound{
-    width: 80vh;
+    width: 78vh;
+}
+
+.notFoundContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

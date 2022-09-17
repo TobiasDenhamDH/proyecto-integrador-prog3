@@ -61,20 +61,21 @@ export default class MasValoradas extends Component {
     render() {
         return (
             <>
-            <div>
-                <h1>Peliculas Más Valoradas</h1>
-                <button className="btn-mas" onClick={()=>this.agregarMas()} >Cargar Más Peliculas</button>
-            </div>
+            {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></> : <>
+                <div>
+                    <h1>Peliculas Más Valoradas</h1>
+                    <button className="btn-mas" onClick={()=>this.agregarMas()} >Cargar Más Peliculas</button>
+                </div>
 
 
-                <section className= 'cardContainer'>
+                    <section className= 'cardContainer'>
 
-                    {this.state.peliculasMasValoradas.map(pelicula =>
-                        <Card key={pelicula.id} peliculas={pelicula} favorito={(fav) => this.handleFavoritos(fav)}/>             
-                    )}
-                
-                </section>
-
+                        {this.state.peliculasMasValoradas.map(pelicula =>
+                            <Card key={pelicula.id} peliculas={pelicula} favorito={(fav) => this.handleFavoritos(fav)}/>             
+                        )}
+                    
+                    </section>
+            </>}
             </>
         )
     }

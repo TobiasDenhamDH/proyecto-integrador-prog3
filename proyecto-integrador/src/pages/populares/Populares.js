@@ -24,7 +24,7 @@ export default class Populares extends Component {
             .then((res)=>res.json())
             .then(data=>this.setState({
                 peliculasPopulares: data.results, 
-                cargando:true,
+                cargando: true,
                 page: data.page
             }))
             .catch((err)=>{console.log(err)})
@@ -56,7 +56,8 @@ export default class Populares extends Component {
     }
 
     filter(filtro){
-        let popularesFiltradas = this.state.peliculasPopulares.filter(pelicula => {return pelicula.title.includes(filtro)})
+        console.log(filtro)
+        let popularesFiltradas = this.state.peliculasPopulares.filter((pelicula => pelicula.title.includes(filtro)))
         this.setState({peliculasFiltradas: popularesFiltradas})      
     }
 
@@ -78,6 +79,7 @@ export default class Populares extends Component {
     render() {
         return (
             <>
+            {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></>:<>
                 <div className='formContainer'> 
                         <form>
                             <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
@@ -121,8 +123,8 @@ export default class Populares extends Component {
                     </section>
 
                 </div>
-
                 }
+            </>}
                 
             </>
         )

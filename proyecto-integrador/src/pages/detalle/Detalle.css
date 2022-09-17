@@ -1,20 +1,22 @@
-.cardContainer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.item-card-detail {
+ section h1{
+     font-size: 40px;
+     margin-left: 3.7%;
+ }
+ 
+ .item-card-detail {
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     padding: 10px;
     margin-bottom: 15px;
-    max-width: 50%;
+    max-width: 60%;
     background-color: black;
 }
 
 .item-card-detail2 img{
     margin-bottom: 100px; 
     width: 50vh
+}
+
+.item-card-detail button{
+    margin-left: 14px;
 }
