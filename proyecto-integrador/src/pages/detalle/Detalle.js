@@ -5,11 +5,13 @@ import "./Detalle.css"
     constructor(props) {
         super(props)
         this.state={
+            cargando: false,
             id: this.props.match.params.id,
             detalle: {},
             favoritos: [],
             boton: [],
             genre: "",
+
         }
     }
 
@@ -22,7 +24,8 @@ componentDidMount(){
             return this.setState({
                 detalle : data,
                 genre: data.genres[0].name,
-                boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.state.detalle.id)
+                boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.state.detalle.id),
+                cargando: true
             })
     })
     .catch(err => console.log(err))
@@ -50,26 +53,26 @@ render(){
     let img = 'https://image.tmdb.org/t/p/w342'
     
     return (
-    <>
-    <section>
-    <h1><strong>Detalle de {this.state.detalle.title}</strong></h1>
-    
-    
-    <section className='cardContainer'>
-        <article className='item-card-detail2'>
-            <img src={`${img}${this.state.detalle.poster_path}`}alt="imagen" />
-        </article>
-        <article className= 'item-card-detail'>
-            <p><strong>Rating:</strong> {this.state.detalle.vote_average}</p>
-            <p><strong>Fecha de estreno:</strong> {this.state.detalle.release_date}</p>
-            <p><strong>Duración:</strong> {this.state.detalle.runtime} minutos</p>
-            <p><strong>Sinópsis:</strong> {this.state.detalle.overview}</p>
-            <p><strong>Género:</strong> {this.state.genre}</p>
-            <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
-        </article> 
-    </section>
-    </section>   
-    </>
+        <>
+        {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></>: <> 
+            <section>
+            <h1><strong>Detalle de {this.state.detalle.title}</strong></h1>
+            <section className='cardContainer'>
+                <article className='item-card-detail2'>
+                    <img src={`${img}${this.state.detalle.poster_path}`}alt="imagen" />
+                </article>
+                <article className= 'item-card-detail'>
+                    <p><strong>Rating:</strong> {this.state.detalle.vote_average}</p>
+                    <p><strong>Fecha de estreno:</strong> {this.state.detalle.release_date}</p>
+                    <p><strong>Duración:</strong> {this.state.detalle.runtime} minutos</p>
+                    <p><strong>Sinópsis:</strong> {this.state.detalle.overview}</p>
+                    <p><strong>Género:</strong> {this.state.genre}</p>
+                    <button className='buttonFav' onClick={()=> this.handleButton()}>{this.state.boton ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}</button>
+                </article> 
+            </section>
+            </section>  
+        </>}
+        </>
     )
 }
 }
