@@ -37,7 +37,7 @@ export default class Favoritos extends Component {
     render() {
         return (
             <>
-                {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></> : <>
+                {this.state.cargando === false? <><img className="cargando" src={'../Cargando.gif'} alt='Cargando'/></> : <>
                 
                 <div className='container'>
                     

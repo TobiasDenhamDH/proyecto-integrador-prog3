@@ -25,7 +25,7 @@ export default class MasValoradas extends Component {
             .then((res)=>res.json())
             .then(data=>this.setState({
                 peliculasMasValoradas: data.results, 
-                cargando:true,
+                cargando: true,
                 page: data.page
     
             }))
@@ -82,7 +82,7 @@ export default class MasValoradas extends Component {
     render() {
         return (
             <>
-            {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></> : <>
+            {this.state.cargando === false? <><img className="cargando" src={'../Cargando.gif'} alt='Cargando'/></> : <>
 
                 <div className='searchContainer'> 
                     <input type='search' name='search' placeholder='Buscar en Más Valoradas...' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>

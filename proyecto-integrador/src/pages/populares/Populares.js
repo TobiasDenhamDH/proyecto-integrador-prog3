@@ -78,7 +78,7 @@ export default class Populares extends Component {
     render() {
         return (
             <>
-            {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></>:<>
+            {this.state.cargando === false? <><img className="cargando" src={'../Cargando.gif'} alt='Cargando'/></>:<>
                 <div className='searchContainer'> 
 
                     <input type='search' name='search' placeholder='Buscar en Populares...' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>

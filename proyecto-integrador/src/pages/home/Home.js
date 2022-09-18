@@ -8,7 +8,7 @@ export default class Home extends Component {
     constructor(){
         super()
         this.state={
-            cargando:false,
+            cargando: false,
             peliculasPopulares: [],
             peliculasMasValoradas: [],
             filterBy:'',
@@ -29,7 +29,7 @@ export default class Home extends Component {
             .then((res)=>res.json())
             .then(data=>this.setState({
                 peliculasPopulares: data.results.slice(0,8), 
-                cargando:true,
+                cargando: true,
             }))
             .catch((err)=>{console.log(err)})
 
@@ -82,7 +82,7 @@ export default class Home extends Component {
     render() {
         return (
             <>
-             {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></> : 
+             {this.state.cargando === false? <><img className="cargando" src={'../Cargando.gif'} alt='Cargando'/></> : 
              
              <>
                 <div className='searchContainer'> 

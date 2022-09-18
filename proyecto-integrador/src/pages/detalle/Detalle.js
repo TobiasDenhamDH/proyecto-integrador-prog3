@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import "./Detalle.css"
+import Card from '../../components/card/Card'
 
  export default class Detalle extends Component {
     constructor(props) {
         super(props)
         this.state={
-            cargando: false,
+            cargando:false,
             id: this.props.match.params.id,
             detalle: {},
             favoritos: [],
@@ -22,8 +23,8 @@ componentDidMount(){
     .then(res => res.json())
     .then(data => {
         this.setState({
-            cargando: true,
             detalle : data,
+            cargando: true,
             genre: data.genres[0].name,
             boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.state.detalle.id)
         })
@@ -54,7 +55,7 @@ render(){
     
     return (
         <>
-        {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></>: 
+        {this.state.cargando === false? <><img className="cargando" src={'../Cargando.gif'} alt='Cargando'/></>: 
         
             <> 
                 <section>

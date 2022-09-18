@@ -31,3 +31,7 @@ form, label {
     justify-content: space-evenly;
     align-items:flex-start
 }
+
+.cargando {
+    width: 1000px;
+}
