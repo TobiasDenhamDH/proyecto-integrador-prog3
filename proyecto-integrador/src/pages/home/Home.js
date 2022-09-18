@@ -85,19 +85,19 @@ export default class Home extends Component {
              {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></> : 
              
              <>
-                <div className='formContainer'> 
-                    <form>
+                <div className='searchContainer'> 
+
                         <input type='search' name='search' placeholder='Buscar películas...' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
-                    </form>
+
                 </div>
 
                 {this.state.resultados.length ? 
 
-                <div className='formContainer'>
+                <div className='searchContainer2'>
 
-                <div>
+         
                     <h1>Resultados de búsqueda</h1>
-                </div>
+               
 
                 <section className= 'cardContainer'>
 
@@ -109,14 +109,24 @@ export default class Home extends Component {
                 
                 </div>
 
+                : this.state.filterBy?
+
+                <div className='searchContainer'>
+
+                    <div>
+                        <h1>No hubo coincidencias con la búsqueda</h1>
+                    </div>
+
+                </div>
+
                 :
                 
-                <div className='formContainer'>
+                <div className='searchContainer'>
 
-                <div>
+
                     <h1>Peliculas populares</h1>
                     <Link to='/populares'><button className='btn-mas'>Ver todas</button></Link>
-                </div>
+            
 
                 <section className= 'cardContainer'>
 
@@ -126,10 +136,10 @@ export default class Home extends Component {
                 
                 </section>
 
-                <div>
+             
                     <h1>Peliculas Más Valoradas</h1>
                     <Link to='/masvaloradas'><button className='btn-mas'>Ver todas</button></Link>
-                </div>
+              
 
                 <section className= 'cardContainer'>
 

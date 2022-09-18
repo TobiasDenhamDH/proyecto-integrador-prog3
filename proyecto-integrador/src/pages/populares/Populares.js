@@ -56,8 +56,7 @@ export default class Populares extends Component {
     }
 
     filter(filtro){
-        console.log(filtro)
-        let popularesFiltradas = this.state.peliculasPopulares.filter((pelicula => pelicula.title.includes(filtro)))
+        let popularesFiltradas = this.state.peliculasPopulares.filter((pelicula) => {return pelicula.title.toLowerCase().includes(filtro.toLowerCase())})
         this.setState({peliculasFiltradas: popularesFiltradas})      
     }
 
@@ -80,20 +79,17 @@ export default class Populares extends Component {
         return (
             <>
             {this.state.cargando === false? <><img className="notFound" src={'../Error.svg'} alt='notFound'/></>:<>
-                <div className='formContainer'> 
-                        <form>
-                            <input type='search' name='search' placeholder='Buscar' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
-                        </form>
+                <div className='searchContainer'> 
+
+                    <input type='search' name='search' placeholder='Buscar en Populares...' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
+
                 </div>
 
                 {this.state.peliculasFiltradas.length ? 
 
-                <div className='formContainer'>
+                <div className='searchContainer2'>
 
-                    <div>
-                        <h1>Peliculas populares</h1>
-                        <button className="btn-mas" onClick={()=>this.agregarMas()} >Cargar Más Peliculas</button>
-                    </div>
+                        <h1>Resultados de búsqueda</h1>
                 
                     <section className= 'cardContainer'>
 
@@ -105,14 +101,22 @@ export default class Populares extends Component {
 
                 </div>
                 
-                :
+                : this.state.filterBy?
                 
-                <div className='formContainer'>
+                <div className='searchContainer'>
 
                     <div>
-                        <h1>Peliculas populares</h1>
-                        <button className="btn-mas" onClick={()=>this.agregarMas()} >Cargar Más Peliculas</button>
+                        <h1>No hubo coincidencias con la búsqueda</h1>
                     </div>
+
+                </div>
+
+                :
+
+                <div className='searchContainer'>
+
+                        <h1>Peliculas Populares</h1>
+                        <button className="btn-mas" onClick={()=>this.agregarMas()} >Cargar Más Peliculas</button>
                     
                     <section className= 'cardContainer'>
 

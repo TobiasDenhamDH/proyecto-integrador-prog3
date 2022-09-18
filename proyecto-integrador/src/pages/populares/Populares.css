@@ -16,6 +16,21 @@ div .btn-mas{
     flex-direction:row;
     flex-wrap:wrap;
 }
+.searchContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    align-items: center;
+  
+}
+.searchContainer2 {
+    display: inline-block;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    align-items:flex-start
+}
 
 form, label {
     color: white;

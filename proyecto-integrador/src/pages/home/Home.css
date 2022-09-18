@@ -14,3 +14,20 @@
 form, label {
     color: white;
 }
+
+.searchContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:left;
+    align-items: center;
+  
+}
+
+.searchContainer2 {
+    display: inline-block;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    align-items:flex-start
+}
