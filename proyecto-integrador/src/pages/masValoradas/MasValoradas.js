@@ -87,7 +87,7 @@ export default class MasValoradas extends Component {
                 
                 <div className='formContainer'> 
                         <form>
-                            <input type='search' name='search' placeholder='Buscar películas' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
+                            <input type='search' name='search' placeholder='Buscar películas...' onChange={(e)=>{this.handleChange(e)}} value={this.state.filterBy}/>
                         </form>
                 </div>
 
