@@ -126,8 +126,8 @@ export default class Populares extends Component {
                     
                     </section>
 
-                </div>
-                }
+                </div>}
+
             </>}
                 
             </>

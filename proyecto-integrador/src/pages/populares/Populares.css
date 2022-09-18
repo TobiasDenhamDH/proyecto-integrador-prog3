@@ -1,9 +1,17 @@
+div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:left;
+    align-items: center;
+  
+} 
+
 .cardContainer {
     display: flex;
     flex-direction:row;
     flex-wrap:wrap;
     justify-content: space-evenly;
-  
 } 
 
 div .btn-mas{
